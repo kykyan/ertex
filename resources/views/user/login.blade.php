@@ -22,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition login-page" style="background-image: url('user/img/bglogin.jpg')">
-<div class="login-box">
+<div class="login-box animate__animated animate__fadeIn">
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">

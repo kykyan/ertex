@@ -32,7 +32,7 @@
       <p class="login-box-msg">Silahkan Login Untuk Melanjutkan</p>
 
       @if (session('alert'))
-        <div class="alert alert-danger">
+        <div class="alert alert-danger center d-flex justify-content-center">
           {{ session('alert') }}
         </div>
       @endif

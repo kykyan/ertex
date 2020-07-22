@@ -39,6 +39,7 @@ class ServicesController extends Controller
            	return redirect('/loginservice')->with('alert','NIK Tidak Terdaftar!');
         }
     }
+
     public function logout(){
         Session::flush();
         return redirect('/');
@@ -57,19 +58,11 @@ class ServicesController extends Controller
         if(!empty($user)){
             $service->save();
             Mail::to($request->email)->send(new UserEmail());
-            Mail::to('ertexrw07cawang@gmail.com')->send(new AdminEmail());
+            Mail::to('rizkyyy.an@gmail.com')->send(new AdminEmail());
             return redirect('/pelayanan')->with('sukses','Permintaan Anda Sukses Ditambahkan!');
         } else{
             return redirect('/pelayanan')->with('alert','NIK Tidak Terdaftar! Silahkan Hubungi Pihak RT!');
         }
-
-        try {
-            Citizen::destroy($id);
-            return redirect('/warga')->with('status','Data Berhasil Dihapus!');
-        } catch (\Illuminate\Database\QueryException $e) {
-            return redirect('/warga')->with('error','Data tidak dapat dihapus, Silahkan hapus terlebih dahulu data pada menu pelayanan!');
-        }
-
     }
 
     public function permintaan()
@@ -77,7 +70,6 @@ class ServicesController extends Controller
         $services = DB::table('services')
             ->join('citizens', 'citizens.nik', '=', 'services.nik')
             ->where('statussurat', 0)->get();
-        // $services = Service::paginate(10);
         return view('admin.services.index', compact('services'));
     }
     
@@ -89,10 +81,8 @@ class ServicesController extends Controller
         return view('admin.services.index', compact('services'));
     }
 
-    // UDAH BISA COKKK!!!!!!!!!!!!!!!!
     public function show($id)
     {
-        // $pel = Service::find($id);
         $services = DB::table('services')
             ->join('citizens', 'citizens.nik', '=', 'services.nik')
             ->where('services.pel_id','=', $id)
@@ -121,13 +111,6 @@ class ServicesController extends Controller
             $data['keterangan'] = "Benar Nama tersebut bertempat tinggal/berdomisili diwilayah kami dengan status (Keterangan) 
             adapun surat keterangan domisili ini berlaku 1 bulan sejak tanggal  dikeluarkan.";
         }
-        // dd($data['services']->pel_id);
-        // $pel = Service::find($id);
-        // $services = DB::table('services')
-        // ->join('citizens', 'citizens.nik', '=', 'services.nik')
-        // ->where('services.pel_id','=', $id)
-        // ->select('citizens.*', 'services.*')
-        // ->get();
         return view('admin.services.edit', $data);
     }
     
@@ -154,8 +137,6 @@ class ServicesController extends Controller
             ->where('services.pel_id','=', $id)
             ->select('citizens.*', 'services.*')
             ->first();
-
-        // dd($services);
         
         if($services->jenis == 'Surat Pernyataan')
         {

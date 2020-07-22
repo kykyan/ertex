@@ -66,7 +66,3 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/announcement/{announces}/edit', "AnnounceController@edit");
     Route::patch('/announcement/{announces}', "AnnounceController@update");
 });
-
-
-// Route::get('/warga-asli', "WargaController@index");
-// Route::get('/warga/{citizens}', "WargaController@show");

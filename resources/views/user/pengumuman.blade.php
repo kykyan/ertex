@@ -4,7 +4,8 @@
 
 @section('isi')
 
-	<div class="row text-center d-flex justify-content-center mt-3 mx-5">
+	<h1 style="text-align: center; margin-top: 15px;">Berita Terkini</h1>
+	<div class="row text-center d-flex justify-content-center mt-3 mx-5 animate__animated animate__zoomIn">
     @foreach($announces as $announce)
 		<div class="col-lg-6 col-md-6 mb-4">
 			<div class="card h-100">

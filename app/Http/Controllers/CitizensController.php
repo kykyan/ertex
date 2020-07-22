@@ -9,11 +9,6 @@ use Exception;
 
 class CitizensController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {        
         $data['citizens'] = Citizen::all();
@@ -41,34 +36,19 @@ class CitizensController extends Controller
 
     public function cari(Request $request)
 	{
-		// menangkap data pencarian
 		$cari = $request->cari;
  
-    		// mengambil data dari table pegawai sesuai pencarian data
-		$citizens = DB::table('citizens')
+    	$citizens = DB::table('citizens')
 		->where('nama','like',"%".$cari."%")->paginate();
  
-    		// mengirim data pegawai ke view index
-		return view('admin.citizens.index',['citizens' => $citizens]);
- 
+    	return view('admin.citizens.index',['citizens' => $citizens]);
 	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.citizens.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $citizen = new Citizen;
@@ -86,11 +66,6 @@ class CitizensController extends Controller
         $citizen->kwrgngran = $request->kwrgngran;
         $citizen->ket = $request->ket;
 
-        // $this->validate($request, [
-        //     'nokk' => 'size:16',
-        //     'nik' => 'size:16',
-        // ]);
-
         $cek = Citizen::where('nik', $request->nik)->first();
         if(!empty($cek)){
             return back()->with('alert','NIK Sudah Terdaftar!');
@@ -98,42 +73,18 @@ class CitizensController extends Controller
             $citizen->save();
             return redirect('/warga')->with('status','Data Berhasil Ditambahkan!');
         }
-
-        // $citizen->save();
-
-        // Citizen::create($request->all());
-        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show(Citizen $citizen)
     {
         return view('admin.citizens.show', compact('citizen'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Citizen $citizen)
     {
         return view('admin.citizens.edit', compact('citizen'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         Citizen::where('id', $id)
@@ -155,16 +106,8 @@ class CitizensController extends Controller
             return redirect('/warga')->with('status','Data Berhasil Diubah!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        // Citizen::destroy($id);
-        // return redirect('/warga')->with('status','Data Berhasil Dihapus!');
         try {
             Citizen::destroy($id);
             return redirect('/warga')->with('status','Data Berhasil Dihapus!');

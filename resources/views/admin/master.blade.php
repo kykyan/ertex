@@ -110,7 +110,7 @@
                 <li class="nav-item">
                   <a href="/permintaan" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Permintaan</p>
+                    <p>Permohonan</p>
                   </a>
                 </li>
                 <li class="nav-item">

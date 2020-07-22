@@ -4,39 +4,24 @@
 
 @section('isi')
 
+<!-- My CSS -->
+<link href="user/css/style.css" rel="stylesheet">
+
+<!-- Jumbotron -->
+<div class="jumbotron jumbotron-fluid animate__animated animate__fadeIn">
+  <div class="container">
+    <h5 class="display-1 animate__animated animate__slideInDown">Selamat Datang</h5>
+    <p class="display-2 animate__animated animate__slideInDown">Di Website RT 010 / 07</p>
+    <p class="display-2 animate__animated animate__slideInDown">Kel. Cawang Kec. Kramatjati</p>
+  </div>
+</div>
+<!-- Akhir Jumbotron -->
+
 <!-- Page Content -->
 <div class="container">
 
-<!-- Jumbotron Header -->
-<div class="d-flex justify-content-center">
-  <div id="carouselExampleIndicators" class="carousel slide my-4 w-75" data-ride="carousel">
-    <!-- <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol> -->
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="d-block w-100" src="{{ asset('user/img/welcome.jpg') }}" alt="Selamat Datang">
-        <div class="carousel-caption d-none d-md-block">
-          <!-- <h5>Ini Judul</h5>
-          <p>Ini Caption</p> -->
-        </div>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
-
 <!-- Page Features -->
-<div class="row text-center d-flex justify-content-center" style="margin-top:6%; margin-bottom:6%">
+<div class="row text-center d-flex justify-content-center animate__animated animate__backInUp" style="margin-top:10%; margin-bottom:10%">
 
   <div class="col-lg-3 col-md-6 mb-4">
     <div class="card h-100">

@@ -13,8 +13,6 @@ class AnnounceController extends Controller
     {
         $announces = Announce::all();
         return view('admin.announce.index', compact('announces'));
-
-        // dd(Auth::user()->name);
     }
 
     public function create()
